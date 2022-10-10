@@ -1,10 +1,8 @@
 ﻿@model Operation
 <form asp-controller="Home" asp-action="Index" method="post">
     <div class="calculator">
-        <div class="display">
-            <input id="outValue" style="height: 62px" type="text" disabled="disabled" class="col-lg-2" />
-        </div>
-        <div class="controller">
+
+        <div class="controller" style="padding-top:150px">
             <button value="AC" type="button" class="calcBtn top sm">AC</button>
             <button value="PN" type="button" class="calcBtn top sm">&#xb1;</button>
             <button value="Percentage" type="button" class="calcBtn calcBtnO top sm">%</button>
@@ -24,6 +22,13 @@
             <button value="0" type="button" class="calcBtn lg calcBtnD">0</button>
             <button value="." type="button" class="calcBtn sm calcBtnD">.</button>
             <button value="Equals" type="button" class="calcBtn calcBtnO oper sm">=</button>
+
+        </div>
+        <div class="display">
+            <input id="outValue" style="height: 62px" type="text" disabled="disabled" class="col-lg-2" />
+            <input id="value" type="text" style="visibility:hidden" disabled="disabled" />
+            <input id="CheckNumber" type="text" style="visibility:hidden" disabled="disabled" />
+
         </div>
     </div>
 </form>
