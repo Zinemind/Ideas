@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity implements CalendarCustomVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         calendarView = (CalendarCustomView) findViewById(R.id.custom_calendar);
-        calendarView.showCalender(TimeZone.getDefault());
+
+        calendarView.showCalender(TimeZone.getDefault(), CalendarCustomView.TITLETYPE.BLACK);//To set Title color black, use blue or read title type for the different title color
         dateObjects.clear();
         dateObjects.addAll(DataObjectDummy.getDummy(calendarView.getStartDate(),calendarView.getEndDate()));
         calendarView.setData(dateObjects);

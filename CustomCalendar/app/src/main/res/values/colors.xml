@@ -26,4 +26,5 @@
     <color name="gradientEnd">#02B4A4</color>
     <color name="cancelGradientStart">#f0ad4e</color>
     <color name="cancelGradientEnd">#ed7408</color>
+    <color name="red">#FF0000</color>
 </resources>
