@@ -48,6 +48,9 @@ public class CalendarCustomView extends LinearLayout {
     private Boolean isCalendarVisible = false;
     Calendar calendar;
     ProgressDialog mProcessDialog;
+    public static enum TITLETYPE{
+        BLUE,BLACK,RED
+    }
 
     @Override
     public boolean canResolveLayoutDirection() {
@@ -70,7 +73,21 @@ public class CalendarCustomView extends LinearLayout {
         isCalendarVisible = true;
         setTimezone(timezone);
         cal = Calendar.getInstance(this.timezone);
-        initializeUILayout();
+        //if type is null then title color is blue
+        initializeUILayout(null);
+        setUpCalendarAdapter();
+        setPreviousButtonClickEvent();
+        setNextButtonClickEvent();
+        setGridCellClickEvents();
+        setTodayClickEvents();
+    }
+
+    public void showCalender(TimeZone timezone,TITLETYPE type) {
+        isCalendarVisible = true;
+        setTimezone(timezone);
+        cal = Calendar.getInstance(this.timezone);
+        //we can set the color values red,blue or black
+        initializeUILayout(type);
         setUpCalendarAdapter();
         setPreviousButtonClickEvent();
         setNextButtonClickEvent();
@@ -119,7 +136,7 @@ public class CalendarCustomView extends LinearLayout {
         calendarListner = (CalendarListner) context;
     }
 
-    private void initializeUILayout() {
+    private void initializeUILayout(TITLETYPE type) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.calendar_layout, this);
         previousButton = (ImageView) view.findViewById(R.id.previous_month);
@@ -127,6 +144,24 @@ public class CalendarCustomView extends LinearLayout {
         currentDate = (TextView) view.findViewById(R.id.display_current_date);
         calendarGridView = (GridView) view.findViewById(R.id.calendar_grid);
         todayButton = (Button) view.findViewById(R.id.today);
+        LinearLayout titleLayout=(LinearLayout) view.findViewById(R.id.titleLayout);
+        LinearLayout headLayout=(LinearLayout) view.findViewById(R.id.headLayout);
+        LinearLayout titleButtonLay=(LinearLayout) view.findViewById(R.id.titleButtonLay);
+        //Default title color is blue
+        if(TITLETYPE.BLACK.equals(type)) {
+            titleLayout.setBackgroundColor(context.getResources().getColor(R.color.textColorBlack));
+            headLayout.setBackgroundColor(context.getResources().getColor(R.color.textColorBlack));
+            titleButtonLay.setBackgroundColor(context.getResources().getColor(R.color.textColorBlack));
+        }else if(TITLETYPE.RED.equals(type)) {
+            titleLayout.setBackgroundColor(context.getResources().getColor(R.color.red));
+            headLayout.setBackgroundColor(context.getResources().getColor(R.color.red));
+            titleButtonLay.setBackgroundColor(context.getResources().getColor(R.color.red));
+        }else{
+            titleLayout.setBackgroundColor(context.getResources().getColor(R.color.colorAccentCalander));
+            headLayout.setBackgroundColor(context.getResources().getColor(R.color.colorAccentCalander));
+            titleButtonLay.setBackgroundColor(context.getResources().getColor(R.color.colorAccentCalander));
+        }
+
     }
 
     private void setPreviousButtonClickEvent() {
