@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     $("#details").hide();
     $("#btn").click(function () {
-        debugger;
+       // debugger;
         btnSubmit();
     });
 });
@@ -9,15 +9,16 @@
 function btnSubmit() {
     debugger;
     var name = $("#name").val();
-    var email = $("#email").val();
+    var email = ValidateEmail( $("#email").val());
     var phone = $("#phone").val();
-    var age = $("#age").val();
+    var age = ValidateNumber($("#age").val());
+    var qua = $("#qua").val();// Add new field qualification
     if (name != "") {
         $.ajax({
 
             type: 'POST',
             url: 'Home/Register',
-            data: { Name: name, Email: email, PhoneNumber: phone, Age: age, Id: 0 },
+            data: { Name: name, Email: email, PhoneNumber: phone, Age: age, Id: 0, Qualification:qua },
             cache: false,
             success: function (result) {
                 debugger;
@@ -26,4 +27,22 @@ function btnSubmit() {
         });
     }
     
+}
+// Email Validation
+function ValidateEmail(inputText) {
+    //debugger;
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (inputText.match(mailformat)) {
+        return true;
+    }
+    else {
+        alert("You have entered an invalid email address!");
+        return false;
+    }
+}
+// Number Validation
+function ValidateNumber(number) {
+    if (isNaN(number)) {
+        alert('Please provide a valid  Number as Age');
+    }
 }
