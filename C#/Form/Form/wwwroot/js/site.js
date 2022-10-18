@@ -1,17 +1,17 @@
 ﻿$(document).ready(function () {
     $("#details").hide();
     $("#btn").click(function () {
-        debugger;
+       // debugger;
         btnSubmit();
     });
 });
 // submit form
 function btnSubmit() {
-    debugger;
+   // debugger;
     var name = $("#name").val();
-    var email = $("#email").val();
+    var email = ValidateEmail( $("#email").val());
     var phone = $("#phone").val();
-    var age = $("#age").val();
+    var age = ValidateNumber( $("#age").val());
     if (name != "") {
         $.ajax({
 
@@ -26,4 +26,22 @@ function btnSubmit() {
         });
     }
     
+}
+// Email Validation
+function ValidateEmail(inputText) {
+    //debugger;
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (inputText.match(mailformat)) {
+        return true;
+    }
+    else {
+        alert("You have entered an invalid email address!");
+        return false;
+    }
+}
+// Number Validation
+function ValidateNumber(number) {
+    if (isNaN(number)) {
+        alert('Please provide a valid  Number as Age');
+    }
 }
