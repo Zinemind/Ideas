@@ -1,0 +1,33 @@
+﻿@model Form
+<form asp-controller="Home" asp-action="Index" method="post">
+    <div class="">
+        <h1>Register Now</h1>
+        <hr>
+
+        <label for="name"><b>Name</b></label>
+        <input type="text" placeholder="Enter Name" id="name">
+
+        <label for="email"><b>Email ID</b></label>
+        <input type="text" placeholder="Enter Email ID" id="email">
+
+        <label for="phone"><b>Phone Number</b></label>
+        <input type="text" placeholder="Enter Phone Number" name="phone" id="phone">
+        <label for="age"><b>Age</b></label>
+        <input type="text" placeholder="Enter Age" name="age" id="age">
+       
+        <hr>
+        <div class="hide" id="details">
+            <h2>You are entered</h2>
+            <label for="name" id="namedetails"><b></b></label>
+            <label for="email" id="emaildetails"><b></b></label>
+            <label for="phone" id="phonedetails"><b></b></label>
+            <label for="age" id="agedetails"><b></b></label>
+            <label><b>Your registered ID : </b></label>
+            <label for="id" id="id"><b></b></label>
+
+
+        </div>
+
+        <button type="submit" class="registerbtn" id="btn">Submit</button>
+    </div>
+</form>
