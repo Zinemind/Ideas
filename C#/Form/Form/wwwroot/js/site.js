@@ -7,17 +7,18 @@
 });
 // submit form
 function btnSubmit() {
-   // debugger;
+    debugger;
     var name = $("#name").val();
     var email = ValidateEmail( $("#email").val());
     var phone = $("#phone").val();
-    var age = ValidateNumber( $("#age").val());
+    var age = ValidateNumber($("#age").val());
+    var qua = $("#qua").val();// Add new field qualification
     if (name != "") {
         $.ajax({
 
             type: 'POST',
             url: 'Home/Register',
-            data: { Name: name, Email: email, PhoneNumber: phone, Age: age, Id: 0 },
+            data: { Name: name, Email: email, PhoneNumber: phone, Age: age, Id: 0, Qualification:qua },
             cache: false,
             success: function (result) {
                 debugger;

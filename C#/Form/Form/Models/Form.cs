@@ -20,6 +20,8 @@ namespace Form.Models
         public int Age { get; set; }
         [Display(Name = "Id")]
         public int Id { get; set; }
+        [Display(Name = "Qualification")]
+        public string Qualification { get; set; }
 
 
 
